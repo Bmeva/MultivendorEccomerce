@@ -1,0 +1,16 @@
+{% if messages %}
+
+    {% for message in messages %}
+
+        <div class="alert alert-{{ message.tags }} show-notifications" role="alert"> <!--show-notification is a css class to create animation. if you dont want the animation then you can take it off-->
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+
+             <strong>{{ message }}</strong>
+
+        </div>
+
+    {% endfor %}
+
+{% endif %}

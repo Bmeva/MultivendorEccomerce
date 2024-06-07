@@ -1,0 +1,238 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<!-- Main Section Start -->
+<div class="main-section">
+  <!-- Home Pages Elements Strat -->
+  <!-- Main Search Start -->
+  <div id="img1" class="page-section nopadding cs-nomargin main-search-bar"
+    style="padding-top: 200px; padding-bottom: 150px; margin-bottom: 0px; background: url({% static 'extra-images/bg-image1.jpg' %}) no-repeat center / cover;">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <div class="element-title">
+            <h1 style="
+                font-size: 40px;
+                color: #505050;
+                text-transform: uppercase;
+                line-height: 50px;
+                margin-bottom: 25px;
+                text-align: center;
+              ">
+              We are in the business of food<br />our restaurants do
+            </h1>
+            <p style="
+                font-size: 18px;
+                letter-spacing: 1px;
+                color: #505050;
+                text-align: center;
+              ">
+              This restaurant vendor application is in trial stage, developed by Evans
+            </p>
+          </div>
+        </div>
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <div class="main-search fancy bg-holder">
+            <form action="{% url 'search' %}" method="GET">
+              <div class="row">
+                <div class="col-lg-4 col-md-4 col-sm-3 col-xs-12">
+                  <div class="field-holder">
+                    <input type="text" name="keyword" placeholder="Resturant name or food name"
+                      id="vendor-search-input" />
+                  </div>
+                </div>
+
+                <div class="dropdown">
+                  <button class="btn btn-secondary dropdown-toggle" type="button" id="vendorDropdownButton"
+                    data-toggle="dropdown" style="height: 50px" aria-haspopup="true" aria-expanded="false">
+                    Select a Vendor
+                  </button>
+                  <div class="dropdown-menu" aria-labelledby="vendorDropdownButton">
+                    {% for vendor in all_vendors %}
+                    <a class="dropdown-item" href="#" data-vendor-name="{{ vendor.vendor_name }}">
+                      {{ vendor.vendor_name }}
+                    </a>
+                    {% endfor %}
+                  </div>
+                </div>
+
+                <div class="col-lg-4 col-md-4 col-sm-5 col-xs-12">
+                  <div class="field-holder">
+                    <ul>
+                      <li class="select-location">
+                        <div class="foodbakery-locations-fields-group foodbakery-focus-out">
+                          <span class="foodbakery-search-location-icon"><i class="icon-location"></i></span>
+
+                          <input type="text" name="address" class="location-field-text filter" id="id_primaryAddress"
+                            required placeholder="All Locations" />
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <!-- 
+								<div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+									<select name="radius" id="radius" style="height: 50px;" required>
+										<option value="" selected>Choose Radius</option>
+										<option value="5">5km</option>
+										<option value="10">10km</option>
+										<option value="15">15km</option>
+										<option value="25">25km</option>
+										<option value="30">30km</option>
+										<option value="70">70km</option>
+										<option value="100">100km</option>
+									</select>
+								</div>
+								-->
+
+                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                  <div class="field-holder">
+                    <input type="submit" value="Search" />
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Search End -->
+  <div class="d-flex justify-content-center">
+    <button type="button" class="btn btn-info" onclick="func1()">Toggle</button>
+    <!-- func1() is calling from JQ.js -->
+  </div>
+
+  <!-- Top Restarurants Section Start -->
+  <div class="page-section nopadding cs-nomargin main-search-bar" style="
+      margin-top: 0px;
+      padding-top: 60px;
+      padding-bottom: 0px;
+      margin-bottom: 0px;
+      background: #ffffff;
+    ">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <div class="element-title align-left">
+            <h2>Top Restaurants</h2>
+            <p>Explore restaurants, bars, and cafés by locality</p>
+          </div>
+        </div>
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"
+          style="padding-right: 0 !important; padding-left: 0 !important">
+          <div class="company-logo">
+            <ul>
+              {% for ven in Vendor %}
+              <li class="has-border">
+                <figure>
+                  {% if ven.user_profile.profile_picture %}
+
+                  <a href="{% url 'vendor_detail' vendor_slug=ven.vendor_slug %}"><img
+                      src="{{ ven.user_profile.profile_picture.url }}" height="125"
+                      class="attachment-full size-full wp-post-image" alt="" />
+                  </a>
+
+                  {% else %}
+                  <a href="{% url 'vendor_detail' vendor_slug=ven.vendor_slug %}"><img
+                      src="{% static 'extra-images/listing-logo18.png' %}" height="125"
+                      class="attachment-full size-full wp-post-image" alt="" /></a>
+
+                  {% endif %}
+                </figure>
+              </li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Top Restarurants Section End -->
+  <!-- Choose From Most Popular Listin Start -->
+  <div class="page-section nopadding cs-nomargin" style="
+      margin-top: 0px;
+      padding-top: 60px;
+      padding-bottom: 50px;
+      margin-bottom: 0px;
+      background: #ffffff;
+    ">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <div class="element-title align-center">
+            <h2>Choose From Most Popular Restaurants</h2>
+            <p>This web application is in trail stage and would go live by August 2024.</p>
+          </div>
+        </div>
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <div class="listing fancy">
+            <ul class="row">
+              {% for ven in Vendor %}
+
+              <li class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <div class="list-post featured">
+                  <div class="img-holder">
+                    <figure>
+                      <a href="#">
+                        {% if ven.user_profile.profile_picture %}
+                        <a href="{% url 'vendor_detail' vendor_slug=ven.vendor_slug %}"><img
+                            src="{{ ven.user_profile.profile_picture.url }}" class="img-thumb wp-post-image"
+                            alt="{{ ven.vendor_name }}" />
+
+                        </a>
+                        {% else %}
+                        <a href="{% url 'vendor_detail' vendor_slug=ven.vendor_slug %}"><img
+                            src="{% static 'extra-images/listing-logo18.png' %}" height="125"
+                            class="img-thumb wp-post-image" alt="" /></a>
+
+                        {% endif %}
+                      </a>
+                    </figure>
+                    {% if ven.is_open == True %}
+                    <span
+                      class="restaurant-status open"><!-- restaurant-status open is a css class which has green colour while close has red -->
+                      <em class="bookmarkRibbon"></em>Open
+                    </span>
+                    {% elif ven.is_open == False %}
+                    <span class="restaurant-status close">
+                      <em class="bookmarkRibbon"></em>Closed
+                    </span>
+                    {% else %}
+                    <span class="restaurant-status close">
+                      <em class="bookmarkRibbon"></em>NA
+                    </span>
+                    {% endif %}
+                  </div>
+                  <div class="text-holder">
+                    <div class="post-title">
+                      <h5>
+                        <a href="{% url 'vendor_detail' vendor_slug=ven.vendor_slug %}">{{ ven }}</a>
+                      </h5>
+                    </div>
+                    {% if ven.user_profile.city and ven.user_profile.state %}
+                    <span>{{ven.user_profile.city}}, {{ven.user_profile.state}},
+                      {{ven.user_profile.full_address1}}</span>
+
+                    {% endif %}
+                  </div>
+                </div>
+              </li>
+
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Choose From Most Popular Listing End -->
+
+  <!-- Home Pages Elements End  -->
+</div>
+<!-- Main Section End -->
+
+{% endblock %}

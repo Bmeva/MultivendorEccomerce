@@ -1,0 +1,18 @@
+
+<div class="user-account-nav user-account-sidebar">
+    <div class="user-nav-list">
+        <ul>
+            <li class="{% if '/customer/' == request.path %}active{% endif %}"><a href="{% url 'customer' %}"><i class="icon-dashboard3"></i>Dashboard</a></li>
+            <li class = "{% if '/Myorders/' in request.path or '/order_detail/' in request.path %}active{% endif %}"><a href="{% url 'Customer_Myorders' %}"><i class="icon-add_shopping_cart"></i>My Orders</a></li>
+            <li  class="{% if '/profile/' in request.path %}active{% endif %}"><a href="{% url 'cprofile' %}"><i class="icon-build"></i>Profile Settings</a></li>
+            <li><a href="{% url 'forgot_password' %}"><i class="icon-unlock-alt"></i>Chnage Passwordd</a></li>
+
+            <li><a class="logout-btn" href="{% url 'logout' %}"><i class="icon-log-out"></i>Signout</a></li>
+        </ul>
+    </div>
+</div>
+
+
+<!-- in the check active session i used == in the first one becouse in every other url it starts with
+customer. so if i use in for the first one then when other url is opened the first one would also be highlited becouse
+it contains customer. thats why i used == to get an excet match-->

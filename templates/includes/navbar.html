@@ -1,0 +1,115 @@
+{% load static %} {% load admin_urls %}
+
+<!--Main Wrapper-->
+<div class="wrapper">
+  <!-- Header Start -->
+  <header id="header">
+    <div class="main-header">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+            <div class="logo">
+              <figure>
+                <a href="{% url 'home' %}" class="light-logo">
+                  <img
+                    src="{% static 'logo/foodOnlineLogo.png' %}"
+                    alt="Evans Food Online"
+                    width="250"
+                  />
+                </a>
+              </figure>
+            </div>
+
+            <div class="main-location">
+              <ul>
+                <li class="location-has-children choose-location">
+                  <form action="#">
+                    <input
+                      type="text"
+                      value=""
+                      name="location"
+                      placeholder="Enter your delivery location"
+                      autocomplete="off"
+                    />
+                    <span
+                      id="foodbakery_radius_location_open"
+                      class="foodbakery-radius-location"
+                      ><i class="icon-target5"></i
+                    ></span>
+                  </form>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+            <div class="login-option">
+              {% if user.is_authenticated %}
+              <a href="{% url 'cart' %}">
+                <i
+                  class="fa fa-shopping-cart text-danger"
+                  style="font-size: 20px"
+                ></i>
+                <span
+                  class="badge badge-warning"
+                  id="cart_counter_navbar"
+                  style="
+                    border-radius: 50px;
+                    position: relative;
+                    bottom: 10px;
+                    left: -5px;
+                  "
+                  >{{ cart_count }}</span
+                >
+                <!--we were able to use this becouse we created the context processor {{ cart_count }}-->
+              </a>
+              {% endif %}
+
+              <a
+                href="{% url 'marketplace' %}"
+                class="btn btn-outline-danger text-uppercase font-weight-bold"
+                >Marketplace</a
+              >
+
+              {% if user.is_authenticated %}
+              <a
+                class="cs-color cs-popup-joinus-btn login-popup"
+                href="{% url 'myaccount' %}"
+                >My Account</a
+              >
+              <a
+                class="cs-color cs-popup-joinus-btn login-popup text-danger"
+                href="{% url 'logout' %}"
+                >Logout</a
+              >
+
+              {% else %}
+              <a
+                class="cs-color cs-popup-joinus-btn login-popup"
+                href="{% url 'login' %}"
+                >Login</a
+              >
+              |
+
+              <span
+                ><a
+                  href="{% url 'registeruser' %}"
+                  class="cs-color cs-popup-joinus-btn login-popup ml-0"
+                  >user reg</a
+                >
+                |
+                <a
+                  class="cs-color cs-popup-joinus-btn login-popup ml-0 text-danger"
+                  href="{% url 'registervendor1' %}"
+                  >vendor reg
+                </a></span
+              >
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <!-- Header End -->
+</div>

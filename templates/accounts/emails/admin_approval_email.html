@@ -1,0 +1,14 @@
+{% autoescape off %}
+
+Hi {{user.first_name}},
+
+{% if is_approved %}
+Congrats your restaurant has been approved
+
+{% else %}
+Your application has been rejected. For more details contact info@mevab.com
+
+
+{% endif %}
+
+{% endautoescape %}

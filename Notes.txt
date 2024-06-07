@@ -1,0 +1,1308 @@
+by default django server runs on port 8000 but you can specify the port
+python manage.py runserver 8001
+bome@gmail.com
+Nedva@54
+
+django app password  wzva dtwc styr oaia  while setting it up remove the spaces
+app name django
+
+python -m venv env to create a new virtual environment
+source env/Scripts/activate activate virtual environment
+pip install django install django
+django-admin startproject mysite . to start the project and create a mysite folder
+code . to open it in vs studio
+python manage.py startapp empployees to create app
+python manage.py createsuperuser
+python -m pip install pillow to install pillow package for image files
+python -m pip install --upgrade pip to upgrade pip
+python -m django --version check django version
+cd command would take you into a particular folder or directory
+pwd would tell you the directory you are
+
+pip freeze is used to check all the packages that are installed
+clear is used to clear all the commands
+deactivate is used to deactivate the virtual environment
+
+
+to install gitbash go to git-scm.com once it is installed go to your desktop or any folder and rigt click
+you would see git gui or open gitbash here
+
+python manage.py collectstatic this command is used when you want to host your site on the production
+ server it takes a copy of your static folder and creates a new folder for it in the project directory
+ called static
+
+from . import views  . means the current directory so it would import views.py from the current 
+directory(on the url's.py)
+
+the template was bought from themeforest 
+https://preview.themeforest.net/item/foodbakery-food-delivery-single-multiple-restaurant-template/full_screen_preview/25426367?_ga=2.113633799.1842540891.1695444033-1169887322.1692478008&_gac=1.183311188.1695444033.Cj0KCQjw9rSoBhCiARIsAFOiplkGI6PksFS09-yW_5Fb2A72JWlqPLWk6hp_ODnPs6jsPTWV8IrSnOQaAqqyEALw_wcB
+
+download sublime text editor as the secondary editor
+unzip your template and drag it open in sublime text editor
+1. open index.html and copy all the codes and put inside index.html in the ecomerce project
+at this point if you run the website it would show broken links and images so you have to configure
+the static files which are the css, javascript and images
+1. Create a static folder inside the main project folder which is MealsOnline
+inside the static folder we would add the css, javascript, images and other static files so 
+copy the folders from the foodonline template and paste inside the static folder
+
+2. Next is to configure the static files - go to settings.py file and locate the static_url at the
+ bottom of the page
+type STATIC_ROOT =BASE_DIR /'static'
+also type STATICFILES_DIRS = {
+
+    'MealsOnline/static'
+}
+this specifies the root of the static folder
+
+3. Next is to load the static files inside the template. 
+go to the top of the page and type {% load static %}
+
+next is to call the static folder in the links
+<link href="assets/css/iconmoon.css" rel="stylesheet">
+	<link href="assets/css/style.css" rel="stylesheet">
+	<link href="assets/css/cs-foodbakery-plugin.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	<link href="assets/css/bootstrap-slider.css" rel="stylesheet">
+
+in the above it is calling from assets so it needs to be changed to static. see code below
+
+<link href="{% static 'css/iconmoon.css' %}" rel="stylesheet">
+	<link href="{% static 'css/style.css' %}" rel="stylesheet">
+	<link href="{% static 'css/cs-foodbakery-plugin.css' %}" rel="stylesheet">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	<link href="{% static 'css/bootstrap-slider.css' %}" rel="stylesheet">
+
+the 4th link is calling from online so it doesnt have to changed
+
+
+same thing should be done for the javascript
+<!-- JAVASCRIPT -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="assets/js/modernizr.js"></script>
+	<script src="assets/js/bootstrap.js"></script>
+
+the above code should change to 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="{% static 'js/modernizr.js' %}"></script>
+	<script src="{% static 'js/bootstrap.js' %} "></script>
+
+next scroll down to the bottom of the page and you would see two files called 
+<script src="assets/js/scripts.js"></script>
+	<script src="assets/js/functions.js"></script>
+
+it should change to the code below	
+<script src="{% static 'js/scripts.js' %}"></script>
+	<script src="{% static 'js/functions.js' %}"></script>
+
+Run your server at this point. if the page doesnt load well press ctrl f5
+
+Next load all the images from the static files like we did with css and javascript.
+
+<img src="assets/extra-images/main-logo.png" alt="FoodBakery"> this should change to 
+
+the above code should change to and width attribute was added to change the size of the logo
+<img src="{% static 'logo/foodOnlineLogo.png' %}" alt="Evans Food Online" width="250">
+
+COLLECT STATIC COMMAND IS USED IN PRODUCTION AND IT GETS ALL THE STATIC files and put in a folder
+if you dont run the static command your static files wont work in the production server but it would 
+work in the development environement or local computer
+
+the command is python manage.py collectstatic
+after running this command it would create another folder called static in project level directory
+
+this command would copy all the static folder and create a copy in the E-COMMERCE FOLDER
+
+FOR THIS PROJECT WE WOULD BE USING POSTGRESS
+download POSTGRES FROM https://www.postgresql.org/download/windows/ 
+dont click on the last checkbox after it finishes installation
+
+when i set up my POSTGRES the password is Letmein123
+port 5432. Sometimes postgres would crash while loading or fail to load and in that case cliick on reconfigure
+set the port to use any available port while loading 
+
+after installation you should type pgadmin to open the appliction or go to your c drive, program files and 
+locate postgress
+
+instllaion folder then search pgadmin
+before using windows command line to access POSTGRES databases you need to set up the environement
+type env on your windows
+click on advaneced and environement variables
+go to system variables and path
+click on edit
+now go and copy the path of your postrgress installation by going to c drive, program files
+postgresql, 16, bin and then copy the path (C:\Program Files\PostgreSQL\16\bin)
+go back to the environement variables and click on new and past the path and click ok
+(the same process can be done for mysql)
+to verify 
+go to cmd and type psql -U postgres and enter your password. U is capital
+
+Creating database with postgres
+open Pgadmin and click on the server icon. right click on the databases then click create
+enter the name of the db and click on save
+
+
+next is to go to settings.py and look for the database section
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
+
+change it to 
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'foodonline_db',
+        'USER': 'postgres',  # if you write click on the postgres db and select properties you would see where the postgres is written
+        'PASSWORD': 'Letmein123',
+        'HOST': 'localhost',
+		
+    }
+	
+}
+
+to use posgres you have to install psycopg2 with pip pip install psycopg2
+then run the migrate command so that python would create the default database tables (python manage.py migrate)
+
+when you create tables you can find it by expanding your db, then expand schemas and then tables
+after the migration if you refresh the db you would see the tables
+
+create super user again becouse the super user details on sqlite3 is no more in use
+i used these details again
+
+lenovo
+Letmebe12
+
+to see the auth users expand the db, go to schemas, go to tables, right click on auth users
+and select view / edit data, all rows
+
+hidding sensitive data before pushing codes to github becouse in the settings.py we specified 
+password andother info
+
+1. install pip install python-decouple helps organisae the settings.py so that parameters can be 
+changed 
+without redeploying the project. also helps us use .env to store parameters
+You can read about python decouple from https://pypi.org/project/python-decouple/
+
+2. go to settings.py and paste from decouple import config at the top
+
+3. create a new file in the root directory and call it .env
+4. copy the entire secret key in settings.py and put it inside the .env file
+SECRET_KEY = 'django-insecure-er+q$@xekgzos=entpj8oc)%#k^8u+5ljm6z!%*t_6*rf0(w_-'
+take away the quotes and the spaces
+SECRET_KEY=django-insecure-er+q$@xekgzos=entpj8oc)%#k^8u+5ljm6z!%*t_6*rf0(w_-
+
+GO BACK TO THE SETTINGS.PY AND CHANGE the secret key section to 
+SECRET_KEY = config('SECRET_KEY')
+
+copy DEBUG = True in the settings.py file and paste inside the .env file and 
+then remove the spaces in the .env so it would be like this DEBUG=True
+change the debug section in settings.py to DEBUG = config('DEBUG', cast = bool)
+
+next is to secure the database configuration
+DECLARE VARIBLES AND PASS THE VALUES OF THE DATABASE CONFIGURATIONS TO THEM .
+This should be in the .env file
+DB_NAME=foodonline_db
+DB_USER=postgres
+DB_PASSWORD=Letmein123
+DB_HOST=localhost
+
+pass the variables in .env to the database configuration in settings.py file
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': config('DB_NAME'),
+        'USER': config('DB_USER'),
+        'PASSWORD': config('DB_PASSWORD'),
+        'HOST': config('DB_HOST'),
+    }
+}
+
+while uploading files to github dont include the .env file
+
+if you want other people to set up the project without your credentials then create a .env sample file
+then remove your credentials and ask them to put theirs
+
+MAKING CUSTOM USER MODEL FOR THE PROJECT
+django comes with default user model which include firstname, lastname, email, user name etc
+and django uses username as the login field but the default user model is basic and we need a custom user
+ model we would be using email address as login field and also set roles for them
+we would create the the user class and the Usermanager class which manages the users. It has two methords
+one if for creating the regular user and the other is for creating the super user. and the methords are 
+called when you run the createsuperuser
+
+To start we have to create the accounts app (python manage.py startapp accounts)
+Go to settings.py and register the accounts app under the installed apps section
+
+go to the models.py file in your accounts apps and import the neccesary dependencies
+
+from django.db import models
+from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
+
+create class UserManager(BaseUserManager): it extends the BaseUserManager
+It allows you to edit the way users and superuser accounts are created and you can add more fields 
+while creating user and superuser
+
+we have two methords in this class one if to create a regular user and the other is to create a superuser
+
+to create a super_user we first need to create a regular user and assign him as a superuser thats why we have
+self.create_user in the code below
+
+ def create_superuser(self, first_name, last_name, username, email, password=None):
+        user = self.create_user(  
+            email = self.normalize_email(email),
+            username = username,
+            password = password,
+            first_name = first_name,
+            last_name = last_name,
+              
+         )
+        user.is_admin = True
+        user.is_active = True
+        user.is_staff = True
+        user.is_superadmin = True
+        user.save(using=self._db)
+        return user
+
+class User(AbstractBaseUser) this would allow you take full control of the editing the whole custom user model
+including the authentication functionality of django
+
+there is also an AbstractUser class but it would only enable you to add extra fields and yo uwont have full control
+
+after creating the models we need to tell django that we are not using the default user model instead we would use
+ the custome user model we created
+go to settings.py and below the databases type AUTH_USER_MODEL = 'accounts.User'
+
+the models you create shoud be class UserManager(BaseUserManager): and its two methords
+and def create_superuser 
+
+next  delete the current database (foodonline_db) then recreate it in pgadmin else there would be an error 
+You also need to the migrations folder in the accounts app and delete the initial 001_initial.py
+
+deactivate your virtual environment by typing deactivate
+then activate it again by typing source/env/Scripts/activate
+
+the next step is to run python manage.py makemigrations and python manage.py migrate
+
+
+
+next is to create a new super user becouse the previous super user has been deleted when we deleted the initial table
+
+at this point when you login to the admin you would only see groups so to see the user model 
+you have to go to admin.py and register your models to make it visible on the admin panel
+
+from .models import User
+admin.site.register(User, CustomUserAdmin)
+
+when you refresh your admin panel the user module would be visible however the password is editable and we need
+to make it not editable
+1. go to admin.py and import from django.contrib.auth.admin import UserAdmin
+2. Create class CustomUserAdmin(UserAdmin):
+
+class CustomUserAdmin(UserAdmin):
+    list_display = ('email', 'first_name', 'last_name', 'username', 'role', 'is_active')# without this the admin dashboard
+    #would display only default values but with this we can specify what to display
+    ordering = ('-date_joined',)
+    filter_horizontal = ()
+    list_filter = ()
+    fieldsets = ()
+
+then pass the CustomUserAdmin to admin.site.register(User) so that it would take effect
+
+so the new code would be  
+admin.site.register(User, CustomUserAdmin)
+
+Next is to create a new model called UserProfile
+
+after creating the UserProfile model you have to install pillow becouse this model is using an image field
+pip install pillow
+register your model in the admin panel 
+from .models import UserProfile
+admin.site.register(UserProfile)
+
+configure media files so that the user profile and cover photo would be saved in the media file
+goto settings.py and below the static configuration type the following
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR /'media'
+
+then go to the root folder and create a folder called media
+
+go to urls.py and import the folloing 
+from django.conf import settings
+from django.conf.urls.static import static
+then go after the last square bracket on the urls code and add + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+if you upload photo before configuring the media file then it would create a User folder and place
+the User folder is where we specified that images should be uploaded in the UserProfile model
+the images inside it. but after configuring your media you have to delete that folder
+
+next is to run python.py makemigrations and then python manage.py migrate and then run your server
+
+
+
+At this point user and user profile would be created mannually and seperaty but we want them to be created
+together so we would use django signals to automatically create the user profile whenever a user is created
+
+signal helps us connect events with actions and we would use it to create profile instance whenever user is created
+post save triggered immedialy after something is saved
+presaved is triggered just before the something is saved
+
+1. ceeate a signals.py file in the accounts app and import the neccesary dependencies
+from django.db.models.signals import post_save, pre_save
+from django.dispatch import receiver
+from .models import User, UserProfile
+declare the function and add the code def post_save_create_profile_receiver(sender, instance, created, **kwargs):
+
+
+the next is to add the presave command which is not really needed in this project at this time
+it triggers before an action is completed
+
+after creating the signals go to apps.py and creae a ready function which makes the signals to work
+ def ready(self):
+        import accounts.signals
+
+accounts is the name of the app while signals is the file we created
+
+USER REGISTRATION path
+go to project URL then import from django.url import include
+and add this url path path('accounts/', include('accounts.urls')),
+then create a urls.py in the accounts app and configure the url
+from django.urls import path
+from . import views
+
+urlpatterns = [
+    path('registeruser/', views.registeruser, name='register')
+
+    
+]
+go to views.py in the accounts app and create the registeruser function
+at this point if you go to http://127.0.0.1:8000/accounts/registeruser/ the register user url would display
+
+IMPLEMENT THE USER REGISTRATION FROM
+Watch the 16 minuits video of template inheritance and the user registration form template video
+after that we have to implement the django model form on the customer registration template
+
+
+django form is an inbuilt feature of django which provides replica of model fields
+1. create a file in your app (accounts) and call it form.py we would take the fields in the 
+cutomer registration model and create a form with it 
+
+import from django import forms and from .models import User in the forms.py 
+then type the following codes 
+
+class userform(forms.ModelForm):
+
+    #there is no password and confirm password on the User model so we would create custom fields for them
+    password = forms.CharField(widget = forms.PasswordInput())
+    confirm_password = forms.CharField(widget = forms.PasswordInput())
+    class Meta:
+        model = User # we are replicating the fields of User model
+        fields = ['first_name', 'last_name', 'username', 'email', 'phone_number', 'password'] 
+
+
+    def clean(self):
+        cleaned_data = super(userform, self).clean()
+        password = cleaned_data.get('password')
+        confirm_password = cleaned_data.get('confirm_password')
+        if password != confirm_password:
+            raise forms.ValidationError('Passwords does not match')
+
+The clean methord validates the password and confirm password to ensure they are the same
+
+Next go to the views for registeruser and call the form. in my code i called it on line 17 
+and write the rest of the code for the view
+
+next go to the register user.html file and call the form elements
+
+Hashing the password
+After registering a user on the admin panel it shows invalid password format so we need to hash the password
+it was stored in plain text but we need to hash the password
+
+on the regsiteruser views type password = form.cleaned_data['password'](line 19) and then
+user.set_password(password) (line 21)
+
+
+Django field errors
+Non field errors are not associated with model fields such as confirm password and password.
+confirm password is not associated with any model field
+field errors are like putting a wrong email format
+
+to display the field errors go to the registeruser.html and before the submit button and type the code below
+ <ul class = "errorlist">
+                                        {% for field in form %}
+                                            {% if field.errors %}
+                                                {% for error in field.errors %}
+
+                                                <li style="color: red;"> {{error}} </li>
+
+                                                {% endfor %}
+
+
+                                            {% endif %}
+
+
+                                        {% endfor %}
+
+                                        <li style="color: red;"> {{form.non_field_errors}} </li>#this section is to display the non field error
+
+
+                                    </ul>
+
+Display non field errors
+Go to the forms.py and type the def clean(self) method. then on the section where we typed the code to 
+display the field errors type this below  <li style="color: red;"> {{form.non_field_errors}} </li>
+
+
+Django messages (Alert messages or flash messages for example if the user registers succesfully)
+
+Go to settings and verify if django.contrib.messages is in the isntalled apps
+next verify if django.contrib.sessions.middleware.SessionMiddleware
+and django.contrib.messages.middleware.MessageMiddleware' are in the middleware of the settings
+these are the configuration that needs to be set. the session middleware should alsways be on top of the 
+message middleware
+also verify if django.contrib.messages.context_processors.messages' is in the template section in the
+settings 
+
+go to views and import from django.contrib import messages
+then type messages.success(request, "your account has been registered succesfully") in the registeruser views
+below the submit button type <div class="row">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            
+                                            {% include 'includes/alerts.html' %}
+                                        </div>
+                                    </div>
+then go to temlate folder and inside include folder create an alert.html
+and add the codes in the alert.html. the alert.html is able to use the messages becouse of the context 
+processor in django. with the context processor the messages would be available in all html forms in 
+the applicaton. You can also write the code in the alert.html inside each html file
+
+ADDING CUSTOM CSS TO THE MESSAGES
+Go to the static folder inside the project folder (MealsOnline)
+open the CSS folder and create a file called custom.css then type the folling code 
+@keyframes show-toast{
+
+    0%{bottom: -100%;}
+    20%{bottom: 100px;}
+    80%{bottom: 100px;}
+    100%{bottom: -100%;}
+
+
+}
+
+.show-notifications{
+
+    position: fixed;
+    bottom: 100%;
+    right: 20px;
+    animation-name: show-toast;
+    animation-duration: 8s;
+}
+
+Next go to the base.html and link it <link rel="stylesheet" href="{% static 'css/custom.css' %}"> line 27
+
+
+To detect the message tags on the views you have to go to settings and type the code at the end of 
+the file. the message tags is somethinglike messages.success messages.error, warning, primary etc
+
+from django.contrib.messages import constants as messages
+
+MESSAGE_TAGS = {
+    messages.ERROR: "danger",
+
+
+NEXT IS TO CREATE THE VENDOR APP - python manage.py start app and then register it inside the settings
+isntalled apps
+Next create the vendor model
+after that open admin.py in the vendor app and type admin.site.register(vendor)
+then run python manage.py makemigrations
+
+SET UP THE VENDOR REGISTRATION PAGE
+Set up the url patter in the url and then set up the views then create the html file for register vendor
+
+then create the vendor form
+for the vendor registration we need two extra fields which are vendor name and
+vendor license thats why we made the form in the forms.py  but on the views we called up
+the userform we used for customer registration. so we used two forms for the vendor registration
+
+Then you have to Vendor admin configuration by going to admin.py and type the code below
+class VendorAdmin(admin.ModelAdmin):
+    list_display = ('user', 'vendor_name', 'is_approved', 'created_at')
+    list_display_links = ('user', 'vendor_name')
+also register the vendoradmin admin.site.register(vendor, VendorAdmin)
+
+on the registervendor.html the line on 17 is 
+<form action ="{% url 'registervendor1' %}" class="form-fields-set foodbakery-dev-restaurant-form" method="post" enctype="multipart/form-data" >
+The enctype="multipart/form-data" > is used when working with images on the form. its an encoding type
+after this if you go and refresh the vendor section in the admin page it would display the list you STATICFILES_DIRS
+
+
+
+Login page set up
+Create app for loginout, register the app
+create the URL and the views and set up the html page for login also create the logout function
+
+go to the navbar and type the code below so a logged in user would only see logout and my account
+but if not logged in they should see login and register 
+
+{% if user.is_authenticated %}
+								<a class="cs-color cs-popup-joinus-btn login-popup" href="{% url 'myaccount' %}">My Account</a>
+								<a class="cs-color cs-popup-joinus-btn login-popup text-danger" href="{% url 'logout' %}">Logout</a>  
+									
+								{% else %}
+								<a class="cs-color cs-popup-joinus-btn login-popup" href="{% url 'login' %}">Login</a> / 
+									
+								<span><a href="{% url 'registeruser' %}" class="cs-color cs-popup-joinus-btn login-popup ml-0">Register</a></span><a class="get-start-btn" href="{% url 'registervendor1' %}">
+									Register
+									Restaurant </a>
+								{% endif %}
+
+RESTRICT USER FROM ACCESSING UNORTHORISED PAGES
+VENDOR SHOULD not be able to access cutomer dahsboard and customer should not be able to access vendor dashboard
+
+when the login function executes the two decorators would execute firt
+
+@login_required(login_url = 'login')
+@user_passes_test(check_role_vendor)
+def vendordashboard(request):
+    return render(request, 'accounts/vendordashboard.html')
+
+and these decorators calls up the check_role_vendor and  check_role_customer to know their roles
+
+and the login functions calls myaccount function on line 52
+
+@login_required(login_url = 'login')
+def myaccount(request):
+    user = request.user
+    redirecturl = detectuser(user)
+    return redirect(redirecturl)
+
+
+while my account function calls up detectuser function in utils.py
+
+
+EMAIL CONFIGURATION
+1. Configure the email backend from django settings
+go to the .env file we set up for the database using python decouple and type the following
+
+#email configuration
+EMAIL_HOST=smtp.gmail.com
+EMAIL_PORT=587
+EMAIL_HOST_USER=evanstaku3@gmail.com
+EMAIL_HOST_PASSWORD=wzvadtwcstyroaia
+
+Then go to the settings and below the page type the following 
+
+EMAIL_HOST = config('EMAIL_HOST')
+EMAIL_PORT = config('EMAIL_PORT', cast = int)
+EMAIL_HOST_USER = config('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+EMAIL_USE_TLS=True 
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+DEFAULT_FROM_EMAIL = 'Evans Food Online Maket Place <evanstaku3@gmail.com>'
+
+SENDING EMAIL VERIFICATION LINK
+The verification email is sennt immedially the user is saved on line 28 in accounts / views - register user
+and line 52 in vendor / view -registervendor
+the sendvification email is calling up from the loginout app util file
+
+for email link sending 
+
+https://www.youtube.com/watch?v=nuD6qNAurVM on this link you would see how to create an 
+app password
+Go to your account and enable two step authentication
+make sure to remove the spaces in your app password
+also add recovery email
+
+then create a new folder and call it emails inside templates/accounts/emails. inside the emails
+create a file called account_verification_email.html and put the codes
+
+craete the activate url path('activate/<uidb64>/<token>/', utils.activate, name='activate'),
+
+and create the activate function in util.py WHICH WOULD Activate the user when they click on the
+email link
+
+is active is just the active status but vendor would only publich when is approved is true
+
+forgot password
+make the url patterns for forgot password 
+path('forgot_password/', views.forgot_password, name='forgot_password'),
+    
+    path('reset_password_validate/<uidb64>/<token>/', views.reset_password_validate, name='reset_password_validate'),
+    path('reset_password/', views.reset_password, name='reset_password'),
+   
+   next create function for the 3 url
+
+   next go to template - account and create forgotpassword.html 
+   write the code for forgot password in the views and also code for send_password_resetemail
+   the send password reset email was written as a heloer function in the util.py
+   go to templates - acounts - email and create the reset_password_email.html'
+
+   write the reset password validate code. also create the resetpassword.html
+
+
+   Admin approval email.
+   whenever the activation checkbox is checked on the admin panel a notification email should
+   be sent to the vendor
+
+
+COntext context_processors
+create context_processors.py in any of the app but in this case i created it on loginout app
+add this code from vendor.models import vendor
+
+from vendor.models import vendor
+
+def get_vendor(request):
+    try:
+
+        Vendor = vendor.objects.get(user=request.user)
+    except:
+        Vendor=None
+        
+    return dict(Vendor = Vendor)
+
+
+Go to settings in the main project file and go under templates
+on the last line type   'loginout.context_processors.get_vendor', which is the path of the 
+context processor. 
+go to the cover.html and use the vendor object that has been created in the context processor
+in this case we used cover photo, vendor name, profile picture etc
+
+
+google api services to predict places as you start typing address field
+log into google account console.cloud.google.com
+
+Go to the top where they wrote select a project , click the drop down icon and select new project
+Type in the project name and click on create. To see the project click on billing on the sidebar
+and select the project at the top
+next go to billing, click manage billing accounts, click add billing account
+add your credut card and google wont charge you
+
+next go back to console.cloud.google.com and click on the navigation menu on the left
+Click api and services and click on library
+on the search bar type geo coding api click on it and Enable it. 
+make sure your project name is selected at the top
+after set up it gave me my api key
+
+
+
+Gp back to console.cloud.google.com select the project and go to navigation menu on the left
+Click api and services and click on library
+on the search bar type maps javascript api and click on it and Enable it. 
+make sure your project name is selected at the top
+after set up it gave me my api key
+
+
+DO the same for places api as well
+
+
+API keys are created while enabling the 3 apis but after then you can do the below
+GO to API and services then click on credentials then click on API key.
+it would generate an api key for you
+AIzaSyBUmlrX86zGmYYtlKAomHJGwbojXtweWe0
+
+click on restrict api key
+give it a name such as foodonline maps api
+scroll down and click on restrict key
+under the restrict key search for places api and select it,
+search for geocoding api, and maps javascript api and select as well then click save
+
+next go to settings.py and add the api key 
+GOOGLE_API_KEY = 'AIzaSyBUmlrX86zGmYYtlKAomHJGwbojXtweWe0'
+
+next add Google script inside the html head which is in base.html which is inside templates
+<!---Script to load in HTML head--->
+<script src="https://maps.googleapis.com/maps/api/js?key={{GOOGLE_API_KEY}}&libraries=places&callback=initAutoComplete" async defer></script>
+
+Go to context processor and create a function to get the api key
+Context processor is in my loginout app
+
+def Get_Google_Api(request):
+
+    return {'GOOGLE_API_KEY': settings.GOOGLE_API_KEY}
+
+next go to the settings and in the template section add the below
+  'loginout.context_processors.Get_Google_Api',
+
+  Go to the MealsOnline project folder, go to static go to js and create a new file 
+  called custom.js and paste the code that is inside the custom.js
+
+  Next is to link the custom.js in the base.html. type the code below
+  <script src="{% static 'js/custom.js' %}"></script>
+
+
+
+ c:\users\lenovo\appdata\roaming\python\python38\site-packages\osgeo\
+  
+
+  paypal business email is evans.taku@icloud.com Nedva@54
+
+  go to developer.paypal.com and click on login then you would enter paypal developer dashboard
+  go to testing tool then click sandbox accounts then click on create account
+  select personal, select country and click on create
+  create a business account 
+
+  the essence is persoanl account would send money while business account would receive the money
+
+  next go to apps and credential and then click on create app (make sure the sandbox icon at the top is on 
+  and not on live)
+  give the app a name, leave the app type on merchant then select the sandbox buiness account then click on 
+  create app
+  then copy the client id and go to settings in your django project
+  in my case i moved it to the .env file
+
+  to add paypal button go to google and type smart paypal check out button or
+  
+   go to https://developer.paypal.com/demo/checkout/#/pattern/server
+
+
+   add the following to the context_processor  def get_paypal_client_id(request):
+    return {'PAYPAL_CLIENT_ID': settings.PAYPAL_CLIENT_ID}
+
+    goto the template section in settings.py and register the context_processor
+      'loginout.context_processors.get_paypal_client_id',
+
+
+
+add this to the settings.py file PAYPAL_CLIENT_ID = config('PAYPAL_CLIENT_ID')
+
+go to base.html and add paypal javascript sdk  which is copied for the paypal button link 
+<script src="https://www.paypal.com/sdk/js?client-id=test&currency=USD"></script>
+
+change the script on the base.html to 	<script src="https://www.paypal.com/sdk/js?client-id={{ PAYPAL_CLIENT_ID }}&currency=USD"></script>
+
+copy and paste the paypal implementation code on the place_orde.html
+
+when you add the above and check the place_order page paypal button would show but wont pop up
+so you have to add this code in the settings file
+SECURE_CROSS_ORIGIN_OPENER_POLICY = 'same-origin-allow-popups'
+
+to see my client id log into paypal then click on developer then goto apps and credentials
+if you click on view live credentials you would see the live one
+
+
+to see these details click on the .... on the sandbox account then click view / edit account
+sandbox url
+sb-x47jor29381103@personal.example.com email
+password: V^$o@5$J
+always keep your sandbox mode on and when you want to go live turn off sandbox
+https://developer.paypal.com/dashboard
+
+https://sandbox.paypal.com
+
+
+
+pip freeze > requirements.txt
+This would storeall the dependencies and packages in a txt file
+
+this would install all the packages in the requirements.txt
+pip install -r requirements.txt
+
+
+
+to add pagination go to https://datatables.net
+copy the below links and paste in base.html
+
+//cdn.datatables.net/2.0.0/css/dataTables.dataTables.min.css
+//cdn.datatables.net/2.0.0/js/dataTables.min.js
+
+<link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
+
+<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>
+
+    <script>
+		$(document).ready(function () {
+			$('#myTable').DataTable();
+		});
+	</script>
+
+go to your table and craete an id attribute and name it myTable
+
+
+
+Deployments  (More info can be found here https://rathank.com/foodonline-deploy/)
+1. Create linode accout and set up server go to https://www.linode.com/lp/refer/?r=3110331f04b8010ee93d0fabde1afacaeb150569
+which has a referal link
+
+CLick on sign up  password is Nedva@5412345 username is Bmeva email is evansboma@gmail.com
+Set up your payment methord but you wont be charged until you use their services
+click on create linode button and do your configuration
+Choose distribution select Ubuntu 22.04 LTS (LTS means longtime support)
+region select London eu(west) or select the region nearby you
+
+in the linode plan choose shared cpu not dedicated cos its cheaper so i choose linode 5GB
+then set your linode label and set your password
+Set SSH key anthentication  would add an extra security layer to your server which is recomended but yW_5Fb2A72JWlqPLWk6hp_ODnPs6jsPTWV8IrSnOQaAqqyEALw_wcB
+click on add ssh key, set any label for it
+go to gitbash and run it and type ssh-keygen and press enter then it would create two files called 
+public and private key which would be saved in (/c/Users/LENOVO/.ssh/id_ed25519)
+go into the .ssh folder and open gitbash and type ls which would show you the private and public keys
+type cat cat id_ed25519.pub which is the name of the public key
+copy the public key that is generated and paste it inside ssh public key in your linode server setup
+click on add key and select the check button on your user name
+click on create linode
+
+
+If you dont have gitbash installed you can use other tools to generate ssh key such as puttygen
+
+go to https://www.puttygen.com and downlad puttygen and install in your pc
+open it and click on generate, click on save public key after it has generated
+
+
+After set up wait for sometime for your server to start running
+
+next is to purchase domain name and add the domain to your linode account through the side bar
+select domains and create domain
+select insert default records from one of my linodes
+then select the linode server you want to add the domain to then click on create domain
+Next it would create default records such as the nameservers
+next set the name severs to your domain
+go to your domain and add the nameservers fron ns1 to ns5 and click on change or save nameservers
+sometimes if resgister lock is on the name servers wont change
+give the name servers sometime to propagate
+
+You can also get a free domain on freenom.com
+
+Next login to your server by going to linode. You would find the ip adddress and the ssh adress 
+root@139.162.240.254 which you can use to log into your server
+
+open your vs code and create a new terminal you can rename it so you different one for 
+your live server and the other for the local server
+copy the ssh address and paste on the terminal ssh root@139.162.240.254 and type yes
+then type the passsphrase which is Nedva@54
+
+type  cd / press enter then type ls and press enter to see the root directory of the server
+
+if you go to cd home press enter it would take you to the home directory
+then press ls to see what is in the home directory
+
+
+when you are logged into the server you need to update all the packages that are currently installed on the server
+run this command sudo apt update && apt upgrade -y
+
+Next install python3-pip, python3-dev dev and nginix with the code below
+sudo apt install python3-pip python3-dev ufw nginx
+
+Next is to create a user on the server and give him a spuedo permision
+
+type adduser evansb then add password. i used Nedva@54.
+
+You can decide to add their informations or skip it
+
+Next give the user a psudo permision which means making him a root user
+
+type exit to logout from the root user
+
+Now ssh in to the server as the root user
+type ssh username@ and ip add which is ssh evansb@139.162.240.254 then put your user password
+
+Next allow ssh by typing sudo ufw allow ssh and type the root password
+next type this code to allow the firewall  sudo ufw enable and press yes. This is a firewall which would protect
+your server
+
+Next update the server by using this code sudo apt update
+
+Next install virtual environement with this code sudo pip3 install virtualenv
+
+
+Next you have to go to setting.py and configure the allowed host
+copy the live server ip address and go to settings.py and put the ip address
+139.162.240.254 also add the ip for your local host becouse we also want to run the app on the local server
+ and add your domain so it would look like the below
+ALLOWED_HOSTS = ['139.162.240.254', '127.0.0.1', 'mevab.com', 'www.mevab.com']
+
+Next run collect static command on your local server python manage.py collectstatic
+next create requirements.txt type pip freeze > requirements.txt which would list all the packages installed
+in the project in a txt file
+
+next remove Replace psycopg2 package with psycopg2-binary. and you dont need to 
+specify any version number cos it would isntall the latest version psycopg2 gives issues so the binary is 
+sufficient except you want to do very advanced stuffs. 
+
+Next add to requirements.txt  backports.zoneinfo only if the server python version is less than 3.9
+
+so add backports.zoneinfo==0.2.1;python_version<"3.9"
+
+then add gunicorn to requirements.txt just type gunicorn which would install the latest version
+
+on the server to go back to the root folder type cd / press enter then type ls to see the folders
+then type cd home to navigate to the home folder then type ls to see all the folders in the home folder
+
+then type cd and the folder name and / so it would be cd evansb/ press enter and then type ls to see 
+everything inside the folder
+
+
+next set up git and push the code from local server to remote server
+log into the cloud server with the ssh evansb@139.162.240.254 
+to check the directory you are type pwd
+while logged in create a directory as evansb-dir inside the /home/evansb/folder
+if you are not in th /home/evansb directory type cd/home/evansb/
+
+next make a directory by typing mkdir evansb-dir
+next if you type ls you would see the directory
+next go to the evansb dir by typing cd evansb-dir
+next create a folder with a name site.git with mkdir site.git
+if you type ls now you would see the folder called site.git
+next go into the site.git folder by typing cd site.git
+next type git init --bare    this would Initialized an empty Git repository in /home/evansb/evansb-dir/site.git/
+bare means that our folder would have no source files, just the version control
+
+next run ls to see the files and folders inside the current directory (we are inside the site.git)
+type ls and you would see a folder called hooks
+
+go into the hooks folder by typing cd hooks
+then type ls to see the folders inside the hooks hooks
+next  create a file called 'post-receive' by typing sudo nano post-receive
+it would ask you for password so input Nedva@54
+
+now type the below code inside the post-receive line by line 
+#!/bin/sh press enter
+then copy and paste the below
+git --work-tree=/home/evansb/evansb-dir --git-dir=/home/evansb/evansb-dir/site.git checkout -f main
+
+then press ctr x, y and enter
+
+if you make a mistake while inputing the above delete the post-receive file and create again
+go into the directory and type rm post-receive
+
+in order to execute the post-receive file we need to set the proper permision using sudo chmod +x post-receive
+
+so type sudo chmod +x post-receive
+
+Here is the end for the remote server
+
+make sure you have set up git before this stage Now, 
+we need to configure the remote path of our repository. Tell Git to add a remote called ‘live’:
+go to your local terminal and add this is the terminal
+
+git remote add live ssh://evansb@139.162.240.254/home/evansb/evansb-dir/site.git
+
+
+
+the above is just like when we added git remote add origin https://github.com/Bmeva/MultivendorEccomerce.git
+
+so we have two git paths now. 1. to push the codes to github and 2. the one to push it to live linode server
+
+you can run git status to check files that have been modified
+then type git add -A  (check what it means from the git notes)
+run git commit -m "deploy to linode server" to commit the changes
+
+then push to the live server by typing git push live master  this would send the contents in the master 
+to the live server
+
+before starting this git process run the collect static command so that all images and static files
+would be uploaded python manage.py collectstatic
+
+
+git remote -v  # Check the configured remotes
+git branch      # Check the current branch
+
+
+now go to the your live server terminal. if it is on maybe hooks folder type cd .. then enter
+type cd .. again and press enter till it gets to evansb-dirs folder then type ls 
+
+CONFIGURE POSTGRESQL TO LIVE SERVER
+Go to the live server through the live server user account  ssh evansb@139.162.240.254
+
+then type cd evansb-dir to go into the evansb-dir directory 
+
+then type sudo apt-get install postgresql postgresql-contrib 
+During installation if it ask you to restart any services select non
+
+Next start the postgresql with this code sudo systemctl start postgresql.service
+next enable the postgresql with the code sudo systemctl enable postgresql.service
+next check the status of postgres service with this code sudo systemctl status postgresql.service
+
+
+next Set new password for default postgres user with the code
+sudo passwd postgres  (The dafault user in the insatlled postgres database is postgres) i used Letmein123
+
+next go to the postgres terminal by typing the code below
+sudo su - postgres
+
+next run this code below so you dont have any issues
+psql -d postgres -c "ALTER USER postgres WITH PASSWORD 'NEW PASSWORD'; in my case it was
+
+psql -d postgres -c "ALTER USER postgres WITH PASSWORD 'Letmein123';"
+
+make sure the db password in your .env or setting file is the same as what you configured for the live server
+
+
+next log into the postgres shell and create a new data
+use the code to login to the shell  psql postgres and make sure you are in the postgres user
+
+next create the database with this code CREATE DATABASE foodonline_db;  
+
+then exit two times to exit the postgres shell and postgre database and go back to your server
+
+
+NEXT SET UP VIRTUAL ENVIRONEMENT AND CONFIGURE .ENV Files
+In the ealier stage we have installed virtual environement with the code sudo pip3 install virtualenv
+
+Next we have to create the virtual environement and activate it so ssh into the server user account with
+ssh evansb@139.162.240.254  then type cd evansb-dir to enter inside the directory
+Next type virtualenv env to create the virtual environement. if you type ls now you would see env is created
+
+Next you have to activate the virtual environment by typing source env/bin/activate
+now you would see env in fromt of the server user name
+
+
+next create .env file if you added your .env file in the gitignore files
+type sudo nano .env
+
+copy and paste the content of your .env inside the terminal then use your arrow key and scroll and change
+debug = True to False then press ctr x and press y then enter
+
+next you have to deactivate the virtual environement and reactivate it again 
+
+type deactivate to deactivate it
+
+and reactivate it with with source env/bin/activate
+
+next you have to install requirements.txt with pip install -r requirements.txt
+make sure you are in evansb-dir 
+
+you can create the requirements.txt file with pip freeze > requirements.txt
+
+after installing requrements.txt type pip freeze to see all the installed packages on the live server
+(Make sure the vrtual environement is active)
+
+run python manage.py makrmigrations and python manage.py migrate
+
+next logout of your env by typing exit and go back to the rootpath which is evansb@localhost:
+
+Allow port 8000 by typing sudo ufw allow 8000
+
+Check status of ufw by typing sudo ufw status
+
+next go to evansb-dir directory which is your project directory and activate your env (source bin/env/activate)
+now run python3 manage.py runserver 0.0.0.0:8000 (0.0.0 means it should check all ports)
+to check if is the server is running copy the ip address on the linode server and add 8000
+ie 139.162.240.254:8000
+
+DUMP DATA FROM LOCAL SERVER TO LIVE SERVER
+
+OPEN TERMINAL on the local server and run this code python manage.py dumpdata > backup.json
+it would create a file called backup.json
+
+open the post signal.py file in the account app or whenever you kept it and comment it out
+function to prevent creating a UserProfile which essentially throws 
+“IntegrityError – duplicate key value violates unique
+
+Save the file after commenting and uncoment once the data is loaded into the live server
+
+Then type git add -A
+git commit -m "database backup"
+then git push live master 
+Now the backup.json would be pushed to the live server
+
+
+Now login to the live server to see if the backup.json is there 
+
+ssh evansb@139.162.240.254 then type password and then cd evansb-dir then enter and type ls to see the
+files and folders.
+
+next loginto the python shell while in the evansb-dir and env is activated with the code 
+python manage.py shell
+next import content type with the code from django.contrib.contenttypes.models import ContentType and press enter
+
+then type the next code ContentType.objects.all().delete() and press enter
+
+then type quit() to exit the python shell
+
+then load the data with the code python manage.py loaddata backup.json
+if this did not work then do the following
+Open the file in regular notepad
+- Select save as
+- Select encoding "UTF-8" (Not "UTF-8 (With BOM)")
+- Save the file.
+then start load the file again
+
+After that go and uncomment the function in signals.py and then push the code to the live server again using git
+
+to delete a file in your server type rm and the name of the file eg rm backup.json
+Companies similar to Linode:
+
+INSTALL AND CONFIGURE gunicorn
+MAKE SURE you are in the live server
+ssh evansb@139.162.240.254 then cd evansb-dir then source env/bin/activate
+then type sudo apt install gunicorn
+
+next Tell gunicorn to bind to our Django application and start running with the code 
+gunicorn --bind 0.0.0.0:8000 MealsOnline.wsgi  if you check your settings.py you would see where MealsOnline.wsgi is
+if you do this and get an error then run this code to see the processes that are running
+ps aux | grep 'python3 manage.py runserver'
+then type kill PID  pid is the processes ID so type for example kill 104121
+and then bind the gunicorn again
+
+Next configure gunicorn socket and start gunicorn server
+While env is still activated type this code and press enter 
+sudo nano /etc/systemd/system/gunicorn.socket
+
+then paste this code as it is
+[Unit]
+Description=gunicorn socket
+[Socket]
+ListenStream=/run/gunicorn.sock
+[Install]
+WantedBy=sockets.target
+
+then press ctr x, y then enter
+next configure gunicorn service by copying below code 
+sudo nano /etc/systemd/system/gunicorn.service  and press enter then copy and paste the code below
+[Unit]
+Description=gunicorn daemon
+Requires=gunicorn.socket
+After=network.target
+
+[Service]
+User=evansb
+Group=www-data
+WorkingDirectory=/home/evansb/evansb-dir
+ExecStart=/home/evansb/evansb-dir/env/bin/gunicorn \
+          --access-logfile - \
+          --workers 3 \
+          --bind unix:/run/gunicorn.sock \
+          MealsOnline.wsgi:application
+
+[Install]
+WantedBy=multi-user.target
+
+then press ctr x, y and enter
+
+next restart the gunicorn socket and enable it
+
+copy sudo systemctl start gunicorn.socket and paste 
+
+enable the gunicorn socket with the code
+then copy and paste sudo systemctl enable gunicorn.socket  
+
+if you want to see the status of gunicorn type 
+sudo systemctl status gunicorn.socket  
+
+Next is to Configuring Nginx as a reverse proxy
+
+copy and paste the code below while in your project directory and env activated
+sudo nano /etc/nginx/sites-available/evansb press enter and then copy and paste the next code below
+server {
+    listen 80;
+    server_name mevab.com www.mevab.com;
+
+    location ~ ^/.well-known {
+        root /home/evansb/evansb-dir;
+        allow all;
+    }
+    location = /favicon.ico { access_log off; log_not_found off; }
+    location /static/ {
+        root /home/evansb/evansb-dir;
+    }
+    location /media/ {
+        root /home/evansb/evansb-dir;
+    }
+    location / {
+        include proxy_params;
+        proxy_pass http://unix:/run/gunicorn.sock;
+    }
+}
+
+then press ctr x, y and enter. 
+
+next run the command below  while still in your env and your project directory
+sudo ln -s /etc/nginx/sites-available/evansb /etc/nginx/sites-enabled/
+
+then restart nginix with the code below
+sudo systemctl restart nginx
+
+next open port 80 so that nginix can listen to port 80 and close port 8000
+sudo ufw allow 80
+
+then type 
+sudo ufw allow 'Nginx Full'
+
+and sudo ufw allow 586  this 586 is for sending emails
+in the evnt you are not able to send emails even when you added 586 above then you need to send an email
+to linode customer support at support@linode.com
+
+after that deny port 8000 with the code sudo ufw deny 8000
+
+next go to Go to sites-enabled directory and delete the default site
+cd /etc/nginx/sites-enabled/
+then type ls and you would see two sites one is the one you created and the other is default.
+
+use the code below to remove the default site
+sudo rm default and then type ls you would see their is only one website
+
+next you have to restart nginix with the code sudo systemctl restart nginx
+and restart gunicorn as well with the code sudo systemctl restart gunicorn
+
+now check if the website is working by going to the IP address without 8000. the Ip is 139.162.240.254
+You can also copy it on the linode server
+
+You can also check the website by going to mevab.com
+
+next we have to fix static and media files 
+
+to configure this you need to go inside the nginx/sites-enables folder
+log into your server, go to your project directory (evansb-dir) activate env 
+and type sudo nano /etc/nginx/sites-available/evansb 
+if you type pwd it would show you were you are.
+
+go to etc/nginx by type cd .. then type ls and you would see a file called nginx.conf
+
+then type sudo nano nginx.conf and press enter
+at the top you would see user www-data change it to your user name so it would be
+user evansb and then type ctr x, y and enter
+
+Now restart nginx by typing the code sudo systemctl restart nginx
+
+next you have to refresh your page and you would see that media files and static files have been configured
+
+next install ssl on live server
+while in te etc/nginx path copy and past the code below
+sudo apt install certbot python3-certbot-nginx and press enter
+
+to verify if certbot is installed run the command below
+which certbot
+
+when you press enter you would see it is installed in /user/bin/certbot
+This certbot gives us free ssl certificate for the web app
+
+then type sudo certbot --nginx -d mevab.com then enter an email address
+then type y and enter type y again and enter
+
+now go to http://mevab.com and you would see the web app is now secure
+
+DigitalOcean: DigitalOcean provides cloud infrastructure solutions, including scalable virtual private servers (Droplets), managed Kubernetes, and other developer-friendly tools.
+Vultr: Vultr offers high-performance cloud hosting services, including virtual servers, dedicated instances, and block storage, with data centers located worldwide.
+Amazon Web Services (AWS): AWS is a leading cloud computing platform that offers a wide range of services, including compute, storage, databases, networking, and machine learning, suitable for businesses of all sizes.
+Google Cloud Platform (GCP): GCP provides a suite of cloud services, including compute, storage, databases, machine learning, and analytics, with a focus on scalability, reliability, and performance.
+Microsoft Azure: Azure is a comprehensive cloud platform offering infrastructure as a service (IaaS), platform as a service (PaaS), and software as a service (SaaS) solutions, integrated with Microsoft's ecosystem of products and services.
+
+
+
+
+
+Create github account and create a new repository
+open your application and on the terminal type git init to inialize the project as a git project
+type git add -A  it's a convenient way to add all changes at once, rather than adding them individually.
+git add README.md   would add a readme file
+git branch -M main  to make it a main branch
+next git remote add origin https://github.com/Bmeva/MultivendorEccomerce.git to add the origin
+the last step is to push it to the main branch with git push -u origin main 
+sometimes this might give errors becouse when you did git branch -M main it saves as master on the online git repository
+to check the branch you are in type git branch
+in my case when i did git push -u origin main i had an error becouse on git it was master not branch
+do git commit -m "your message" before pushing it 
+so i did git push -u origin master
+after that refresh the page to see the uploaded files
+
+
+
+
+for hosting on python anywhere
+
+julietnwaigweevans@gmail.com
+Nedva@54
